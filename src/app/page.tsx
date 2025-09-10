@@ -50,10 +50,10 @@ export default function HomePage() {
                       aria-label={item.label}
                       className={cn(
                         buttonVariants({ variant: "ghost", size: "icon" }),
-                        "size-12 rounded-full",
+                        "size-12 rounded-full flex items-center justify-center bg-transparent hover:bg-accent",
                       )}
                     >
-                      <item.icon className="size-4" />
+                      <item.icon className="size-5" />
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent>

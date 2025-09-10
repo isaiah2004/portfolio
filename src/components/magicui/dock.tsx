@@ -1,6 +1,6 @@
 "use client";
 
-import { type MotionProps, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { type MotionProps, motion, useMotionValue, useSpring, useTransform, type MotionValue } from "framer-motion";
 import React, { useRef } from "react";
 
 import { cn } from "@/lib/utils";
@@ -40,8 +40,9 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
 Dock.displayName = "Dock";
 
+
 export type DockIconProps = {
-  mouseX?: ReturnType<typeof useMotionValue<number>>;
+  mouseX?: MotionValue<number>;
 } & React.HTMLAttributes<HTMLDivElement> & MotionProps;
 
 
@@ -58,7 +59,7 @@ const DockIcon = ({
     return val - bounds.x - bounds.width / 2;
   });
 
-  const widthSync = useTransform(distance, [-150, 0, 150], [40, 100, 40]);
+  const widthSync = useTransform(distance, [-150, 0, 150], [40, 60, 40]);
   const width = useSpring(widthSync, {
     mass: 0.1,
     stiffness: 150,
@@ -69,7 +70,7 @@ const DockIcon = ({
     <motion.div
       ref={ref}
       style={{ width }}
-      className={cn("flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full bg-muted/50", className)}
+      className={cn("flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full", className)}
       {...props}
     >
       {children}
