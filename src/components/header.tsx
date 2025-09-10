@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 const Header = () => {
   return (
-    <header className={cn("fixed top-0 left-0 right-0 z-50 hidden md:block")}>
+    <header className={cn("fixed top-0 left-0 right-0 z-50 hidden md:block bg-background/20 backdrop-blur-lg")}>
        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <a href="#home" className="text-xl font-bold text-primary">

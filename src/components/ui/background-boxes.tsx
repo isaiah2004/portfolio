@@ -43,7 +43,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
               }}
               animate={{
                 transition: {
-                  duration: Math.random() * 2 + 1,
+                  duration: Math.random() * 20 + 1,
                   repeat: Infinity,
                   repeatType: "reverse",
                 },
