@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, type MotionProps } from "framer-motion";
 import React, { PropsWithChildren, useRef } from "react";
 
 import { cn } from "@/lib/utils";
@@ -8,10 +8,11 @@ import { cn } from "@/lib/utils";
 export type DockProps = {
   className?: string;
   children: React.ReactNode;
+  direction?: "top" | "bottom" | "left" | "right";
 };
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
-  ({ className, children }, ref) => {
+  ({ className, children, direction = "bottom" }, ref) => {
     const mouseX = useMotionValue(Infinity);
 
     return (
@@ -20,7 +21,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
         className={cn(
-          "mx-auto flex h-16 items-end gap-4 rounded-2xl bg-background/20 px-4 pb-3 backdrop-blur-lg",
+          "flex h-16 items-end gap-4 rounded-2xl bg-background/20 px-4 pb-3 backdrop-blur-lg",
           className,
         )}
       >
@@ -41,7 +42,7 @@ Dock.displayName = "Dock";
 
 export type DockIconProps = {
   mouseX?: ReturnType<typeof useMotionValue<number>>;
-} & React.ComponentProps<"div">;
+} & MotionProps;
 
 const DockIcon = ({
   mouseX,
