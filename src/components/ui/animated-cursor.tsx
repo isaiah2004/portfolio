@@ -2,16 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { cn } from "@/lib/utils";
 
-export const AnimatedCursor = ({
-  color = "225, 11%, 13%",
-  outerAlpha = 0.3,
-  innerSize = 8,
-  outerSize = 24,
-  outerScale = 2,
-  innerScale = 0.7,
-}) => {
+export const AnimatedCursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
@@ -25,8 +17,8 @@ export const AnimatedCursor = ({
   useEffect(() => {
     setIsMounted(true);
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - (isHovering ? (outerSize * outerScale) / 2 : outerSize / 2));
-      cursorY.set(e.clientY - (isHovering ? (outerSize * outerScale) / 2 : outerSize / 2));
+      cursorX.set(e.clientX - 8); // Offset to center the cursor
+      cursorY.set(e.clientY - 8); // Offset to center the cursor
     };
     window.addEventListener("mousemove", moveCursor);
 
@@ -62,7 +54,7 @@ export const AnimatedCursor = ({
       document.removeEventListener("mouseover", handleMouseOver);
       document.removeEventListener("mouseout", handleMouseOut);
     };
-  }, [cursorX, cursorY, isHovering, outerSize, outerScale]);
+  }, [cursorX, cursorY]);
 
   if (!isMounted) {
     return null;
@@ -75,25 +67,27 @@ export const AnimatedCursor = ({
         style={{
           translateX: cursorXSpring,
           translateY: cursorYSpring,
-          backgroundColor: `hsla(${color}, ${outerAlpha})`,
+          backgroundColor: "hsl(var(--primary))",
+          opacity: isHovering ? 0.2 : 1,
         }}
         animate={{
-          width: isHovering ? outerSize * outerScale : outerSize,
-          height: isHovering ? outerSize * outerScale : outerSize,
+          width: isHovering ? 32 : 16,
+          height: isHovering ? 32 : 16,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       />
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[9999] hidden rounded-full bg-primary md:block"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] hidden rounded-full bg-primary/50 md:block"
         style={{
-          translateX: cursorX.get() + (isHovering ? (outerSize * outerScale) / 2 : outerSize / 2) - innerSize / 2,
-          translateY: cursorY.get() + (isHovering ? (outerSize * outerScale) / 2 : outerSize / 2) - innerSize / 2,
+          translateX: cursorX.get() - 12,
+          translateY: cursorY.get() - 12,
         }}
         animate={{
-          width: isHovering ? 0 : innerSize,
-          height: isHovering ? 0 : innerSize,
-          scale: isHovering ? innerScale : 1,
+          width: isHovering ? 0 : 40,
+          height: isHovering ? 0 : 40,
+          opacity: isHovering ? 0 : 0.5
         }}
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
       />
     </>
   );
