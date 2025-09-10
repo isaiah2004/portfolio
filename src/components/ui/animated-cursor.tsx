@@ -62,7 +62,7 @@ export const AnimatedCursor = () => {
 
   return (
     <motion.div
-      className="pointer-events-none fixed left-0 top-0 z-[9999] hidden md:block"
+      className="pointer-events-none fixed left-0 top-0 z-[9999] hidden -translate-x-1/2 -translate-y-1/2 md:block"
       style={{
         translateX: cursorXSpring,
         translateY: cursorYSpring,
