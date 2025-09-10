@@ -25,7 +25,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
         )}
       >
         {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === DockIcon) {
+           if (React.isValidElement(child)) {
             return React.cloneElement(child as React.ReactElement<DockIconProps>, {
               mouseX: mouseX,
             });
@@ -41,9 +41,7 @@ Dock.displayName = "Dock";
 
 export type DockIconProps = {
   mouseX?: ReturnType<typeof useMotionValue<number>>;
-  children?: React.ReactNode;
-  className?: string;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.ComponentProps<"div">;
 
 const DockIcon = ({
   mouseX,
