@@ -8,7 +8,7 @@ import ProjectsSection from '@/components/sections/projects-section';
 import AwardsSection from '@/components/sections/awards-section';
 import ContactSection from '@/components/sections/contact-section';
 import { Dock, DockIcon } from '@/components/magicui/dock';
-import { Home as HomeIcon, User, Code, Briefcase, Trophy, Send } from 'lucide-react';
+import { Home as HomeIcon, User, Code, Briefcase, Trophy, Send, AppWindow } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const navLinks = [
@@ -16,7 +16,7 @@ const navLinks = [
   { href: '#about', label: 'About', icon: User },
   { href: '#skills', label: 'Skills', icon: Code },
   { href: '#experience', label: 'Experience', icon: Briefcase },
-  { href: '#projects', label: 'Projects', icon: Code },
+  { href: '#projects', label: 'Projects', icon: AppWindow },
   { href: '#awards', label: 'Awards', icon: Trophy },
   { href: '#contact', label: 'Contact', icon: Send },
 ];
@@ -42,7 +42,7 @@ export default function HomePage() {
               <DockIcon key={link.href}>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <a href={link.href}>
+                    <a href={link.href} className="flex h-12 w-12 items-center justify-center">
                       <link.icon className="h-6 w-6" />
                     </a>
                   </TooltipTrigger>
