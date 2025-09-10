@@ -11,7 +11,7 @@ export type DockProps = {
 };
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
-  ({ className, children_ }, ref) => {
+  ({ className, children }, ref) => {
     const mouseX = useMotionValue(Infinity);
 
     return (
@@ -24,9 +24,9 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
           className,
         )}
       >
-        {React.Children.map(children_, (child) => {
-          if (React.isValidElement(child)) {
-            return React.cloneElement(child as React.ReactElement<any, string | React.JSXElementConstructor<any>>, {
+        {React.Children.map(children, (child) => {
+          if (React.isValidElement(child) && child.type === DockIcon) {
+            return React.cloneElement(child as React.ReactElement<DockIconProps>, {
               mouseX: mouseX,
             });
           }
@@ -40,20 +40,21 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 Dock.displayName = "Dock";
 
 export type DockIconProps = {
-  mouseX?: any;
-};
+  mouseX?: ReturnType<typeof useMotionValue<number>>;
+  children?: React.ReactNode;
+  className?: string;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 const DockIcon = ({
   mouseX,
   className,
   children,
   ...props
-}: PropsWithChildren<DockIconProps & React.HTMLAttributes<HTMLDivElement>>) => {
+}: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const distance = useTransform(mouseX, (val) => {
+  const distance = useTransform(mouseX ?? useMotionValue(Infinity), (val) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-
     return val - bounds.x - bounds.width / 2;
   });
 

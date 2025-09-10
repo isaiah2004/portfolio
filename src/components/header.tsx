@@ -82,20 +82,20 @@ const Header = () => {
         <div className="md:hidden">
             <Dock>
               {navLinks.map((link) => (
-                <TooltipProvider key={link.href}>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <DockIcon>
-                        <a href={link.href}>
-                          <link.icon className="h-6 w-6" />
-                        </a>
-                      </DockIcon>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{link.label}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <DockIcon key={link.href}>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                          <a href={link.href}>
+                            <link.icon className="h-6 w-6" />
+                          </a>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{link.label}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </DockIcon>
               ))}
             </Dock>
         </div>
