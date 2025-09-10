@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const HeroSection = () => {
   return (
     <section id="home" className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
-      <div className={cn("relative flex flex-col items-center justify-center w-[75%] h-[75vh] bg-card/80 backdrop-blur-sm rounded-xl p-8 md:p-12 shadow-lg ring-1 ring-black/10 overflow-hidden")}>
+      <div className={cn("relative flex flex-col items-center justify-center w-[100%] h-[75vh] bg-card/80 backdrop-blur-sm rounded-xl p-8 md:p-12 shadow-lg ring-1 ring-black/10 overflow-hidden")}>
         <div className="absolute inset-0 w-full h-full bg-card/80 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
         <Boxes />
         <div className="relative z-20 text-center space-y-4">
