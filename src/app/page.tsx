@@ -7,7 +7,7 @@ import ExperienceSection from '@/components/sections/experience-section';
 import ProjectsSection from '@/components/sections/projects-section';
 import AwardsSection from '@/components/sections/awards-section';
 import ContactSection from '@/components/sections/contact-section';
-import { Dock, DockIcon } from '@/components/ui/dock';
+import { Dock, DockIcon } from '@/components/magicui/dock';
 import { Home as HomeIcon, User, Code, Briefcase, Trophy, Send } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
