@@ -10,6 +10,9 @@ import ContactSection from '@/components/sections/contact-section';
 import { Dock, DockIcon } from '@/components/magicui/dock';
 import { Home as HomeIcon, User, Code, Briefcase, Trophy, Send, AppWindow } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from '@/components/ui/button';
 
 const navLinks = [
   { href: '#home', label: 'Home', icon: HomeIcon },
@@ -38,16 +41,23 @@ export default function HomePage() {
       <div className="fixed bottom-4 left-0 right-0 z-50 flex justify-center">
         <TooltipProvider>
           <Dock>
-            {navLinks.map((link) => (
-              <DockIcon key={link.href}>
+            {navLinks.map((item) => (
+              <DockIcon key={item.label}>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <a href={link.href} className="flex h-12 w-12 items-center justify-center">
-                      <link.icon className="h-6 w-6" />
-                    </a>
+                    <Link
+                      href={item.href}
+                      aria-label={item.label}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-full",
+                      )}
+                    >
+                      <item.icon className="size-4" />
+                    </Link>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>{link.label}</p>
+                    <p>{item.label}</p>
                   </TooltipContent>
                 </Tooltip>
               </DockIcon>
