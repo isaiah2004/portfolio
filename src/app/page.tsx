@@ -35,7 +35,7 @@ export default function HomePage() {
         <AwardsSection />
         <ContactSection />
       </main>
-      <div className="md:hidden fixed bottom-4 left-0 right-0 z-50 flex justify-center">
+      <div className="fixed bottom-4 left-0 right-0 z-50 flex justify-center">
         <TooltipProvider>
           <Dock>
             {navLinks.map((link) => (
