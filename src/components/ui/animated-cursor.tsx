@@ -25,8 +25,8 @@ export const AnimatedCursor = ({
   useEffect(() => {
     setIsMounted(true);
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+      cursorX.set(e.clientX - (isHovering ? (outerSize * outerScale) / 2 : outerSize / 2));
+      cursorY.set(e.clientY - (isHovering ? (outerSize * outerScale) / 2 : outerSize / 2));
     };
     window.addEventListener("mousemove", moveCursor);
 
@@ -62,7 +62,7 @@ export const AnimatedCursor = ({
       document.removeEventListener("mouseover", handleMouseOver);
       document.removeEventListener("mouseout", handleMouseOut);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isHovering, outerSize, outerScale]);
 
   if (!isMounted) {
     return null;
@@ -86,8 +86,8 @@ export const AnimatedCursor = ({
       <motion.div
         className="pointer-events-none fixed left-0 top-0 z-[9999] hidden rounded-full bg-primary md:block"
         style={{
-          translateX: cursorX,
-          translateY: cursorY,
+          translateX: cursorX.get() + (isHovering ? (outerSize * outerScale) / 2 : outerSize / 2) - innerSize / 2,
+          translateY: cursorY.get() + (isHovering ? (outerSize * outerScale) / 2 : outerSize / 2) - innerSize / 2,
         }}
         animate={{
           width: isHovering ? 0 : innerSize,
