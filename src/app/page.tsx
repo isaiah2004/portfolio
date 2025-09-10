@@ -35,11 +35,11 @@ export default function HomePage() {
         <AwardsSection />
         <ContactSection />
       </main>
-      <div className="md:hidden fixed bottom-4 left-0 right-0 z-50">
-        <Dock>
-          {navLinks.map((link) => (
-            <DockIcon key={link.href}>
-              <TooltipProvider>
+      <div className="md:hidden fixed bottom-4 left-0 right-0 z-50 flex justify-center">
+        <TooltipProvider>
+          <Dock>
+            {navLinks.map((link) => (
+              <DockIcon key={link.href}>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <a href={link.href}>
@@ -50,10 +50,10 @@ export default function HomePage() {
                     <p>{link.label}</p>
                   </TooltipContent>
                 </Tooltip>
-              </TooltipProvider>
-            </DockIcon>
-          ))}
-        </Dock>
+              </DockIcon>
+            ))}
+          </Dock>
+        </TooltipProvider>
       </div>
       <Footer />
     </div>
