@@ -10,7 +10,7 @@ const projects = [
     description: "A six-legged robot featuring a 3D-printed body and 18 degrees of freedom. Developed custom kinematics and integrated multi-modal capabilities by combining computer vision with Large Language Models (LLMs).",
     technologies: ["Python", "Embedded C", "Computer Vision", "LLMs"],
     link: "https://github.com/isaiah2004/a-intelligent-robot-i",
-    image: "https://picsum.photos/600/400",
+    image: "/hexapod-robot.png",
     imageHint: "robot hexapod",
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     description: "Designed and built a personal IDE using the Textual framework in Python to enhance productivity on the Linux terminal. The IDE features built-in syntax highlighting, cloud drive synchronization, and an integrated file explorer.",
     technologies: ["Python", "Textual"],
     link: "https://github.com/isaiah2004/vimpi-0.1",
-    image: "https://picsum.photos/600/400",
+    image: "/terminal-ide.png",
     imageHint: "code terminal",
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     description: "A fully interactive Rubik's Cube simulation built with the Ursina game engine. The game includes auto-scramble and auto-solve functions and supports both mouse-click and keyboard controls for an intuitive user experience.",
     technologies: ["Python", "Ursina Engine"],
     link: "https://github.com/isaiah2004/rubiks-cube-in-ursina",
-    image: "https://picsum.photos/600/400",
+    image: "/rubiks-cube.png",
     imageHint: "rubiks cube",
   },
 ];
