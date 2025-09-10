@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform, type MotionProps } from "framer-motion";
-import React, { PropsWithChildren, useRef } from "react";
+import { type MotionProps, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import React, { useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -42,7 +42,8 @@ Dock.displayName = "Dock";
 
 export type DockIconProps = {
   mouseX?: ReturnType<typeof useMotionValue<number>>;
-} & MotionProps;
+} & React.HTMLAttributes<HTMLDivElement> & MotionProps;
+
 
 const DockIcon = ({
   mouseX,
