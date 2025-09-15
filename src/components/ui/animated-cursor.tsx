@@ -7,10 +7,6 @@ export const AnimatedCursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 700 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-
   const [isMounted, setIsMounted] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
 
@@ -64,8 +60,8 @@ export const AnimatedCursor = () => {
     <motion.div
       className="pointer-events-none fixed left-0 top-0 z-[9999] hidden -translate-x-1/2 -translate-y-1/2 md:block"
       style={{
-        translateX: cursorXSpring,
-        translateY: cursorYSpring,
+        translateX: cursorX,
+        translateY: cursorY,
       }}
       animate={{
         scale: isHovering ? 1.5 : 1,
